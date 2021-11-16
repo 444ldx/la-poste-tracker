@@ -39,18 +39,16 @@ class Poste:
         json_response = response.json()
 
         if response.status_code == 200 or response.status_code == 207:
-
+            
             shipment = json_response.get("shipment")
-
-            return MessageLaPoste({"idShip": shipment.get("idShip", "Numéro introuvable"),
+            
+            return {"idShip": shipment.get("idShip", "Numéro introuvable"),
                 "product": shipment.get("product", "Produit introuvable"),
                 "entryDate": shipment.get("entryDate", "pas encore"),
-                "event": shipment.get("event")}).success()
+                "event": shipment.get("event")}
         else:
-            idShip = json_response.get("idShip", "Numéro introuvable")
-            message = json_response.get("returnMessage", "Erreur")
-            return MessageLaPoste({"idShip": idShip,
-                "message": message}).error()
+            return {"idShip": json_response.get("idShip", "Numéro introuvable"),
+                "message": json_response.get("returnMessage", "Erreur")}
 
 
 if __name__ == "__main__":
