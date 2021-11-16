@@ -11,6 +11,8 @@ Remplacer les variables d'environement que j'ai utilisé par les votres ou votre
 from la_poste.py import Poste
 
 parcel = Poste("PARCEL_ID").tracker()
+
+print(parcel)
 ```
 
 ## Retour
